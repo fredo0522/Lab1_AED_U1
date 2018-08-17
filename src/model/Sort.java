@@ -17,7 +17,14 @@ public class Sort {
 	
 	public void createNumbers() {
 		for (int i = 0; i < numbers.length; i++){
-			numbers[i] = (float) Math.random() * Float.MAX_VALUE;
+			double chance = Math.random();
+			System.out.println(chance + " Chance");
+			if(chance >= 0.5) {
+				numbers[i] = (float) Math.random() * Float.MAX_VALUE;
+			}else {
+				numbers[i] = (float) Math.floor((double) Math.random() * Double.MAX_VALUE);
+			}
+			
 		}
 	}
 	
@@ -26,12 +33,13 @@ public class Sort {
 	}
 	
 	public static void main(String[] args) {
-		Sort n = new Sort(10);
-		n.createNumbers();
+		Sort a = new Sort(10);
+		a.createNumbers();
+		float[] prep = a.getArray();
 		
-		float[] exp = n.getArray();
-		for (int i = 0; i < exp.length; i++) {
-			System.out.println(exp[i]);
+		for (int i = 0; i < prep.length; i++) {
+			System.out.println(prep[i]);
 		}
 	}
+	
 }
