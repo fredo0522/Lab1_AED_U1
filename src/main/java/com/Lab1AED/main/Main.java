@@ -1,4 +1,4 @@
-package com.JavaFX.Lab1AED.main;
+package com.Lab1AED.main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -1,4 +1,4 @@
-package com.JavaFX.Lab1AED.controller;
+package com.Lab1AED.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
