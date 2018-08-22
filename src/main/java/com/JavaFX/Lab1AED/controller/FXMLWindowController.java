@@ -8,14 +8,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class FXMLWindowController implements Initializable{
 	
 	@FXML
-	private ChoiceBox<String> sortChoice;
+	private ComboBox<String> sortChoice;
+	
+	@FXML
+	private ComboBox<String> numberType;
 	
 	@FXML
 	private Button btnAction;
@@ -31,10 +34,15 @@ public class FXMLWindowController implements Initializable{
 	
 	@FXML
 	public void organizeChoiceBox() {
-		sortChoice.getItems().add("Ordenamiento Creciente");
-		sortChoice.getItems().add("Ordenamiento Decreciente");
+		sortChoice.setPromptText("Ordenamiento");
+		sortChoice.getItems().add("Creciente");
+		sortChoice.getItems().add("Decreciente");
 		sortChoice.getItems().add("Aleatorio");
 		sortChoice.getItems().add("Desordenados en un %");
+		
+		numberType.setPromptText("Tipo Numero");
+		numberType.getItems().add("Enteros");
+		numberType.getItems().add("De coma flotante");
 	}
 	
 	@FXML
