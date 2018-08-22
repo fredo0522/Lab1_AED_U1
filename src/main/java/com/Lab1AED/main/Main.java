@@ -16,7 +16,6 @@ public class Main extends Application{
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Laboratorio AED");
 		primaryStage.show();
-		
 	}
 	
 	public static void main(String[] args) {
