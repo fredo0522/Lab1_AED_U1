@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class FXMLWindowController implements Initializable{
@@ -23,7 +24,10 @@ public class FXMLWindowController implements Initializable{
     private CheckBox manual;
 	
 	@FXML
-    private TextField cantidadEntradas;
+    private TextField sizeArray;
+	
+	@FXML
+    private TextArea textArea;
 	
 	@FXML
 	public void organizeChoiceBox() {
@@ -35,7 +39,7 @@ public class FXMLWindowController implements Initializable{
 	
 	@FXML
 	void visibleChoiceBox(ActionEvent event) {
-		if(!manual.isDisabled()) {
+		if(manual.isSelected()) {
 			sortChoice.setDisable(true);
 		}else {
 			sortChoice.setDisable(false);
@@ -44,13 +48,16 @@ public class FXMLWindowController implements Initializable{
 	
 	@FXML
     void generateArray(ActionEvent event) {
-		int cantidades = Integer.valueOf(cantidadEntradas.getText());
-		for (int i = 0; i < cantidades; i++) {
-			System.out.println("Funciona");
+		if (manual.isSelected()) {
+			textArea.setText("Funciona para escribir valores");
+		}else {
+			textArea.setText("");
+			int cantidades = Integer.valueOf(sizeArray.getText());
+			for (int i = 0; i < cantidades; i++) {
+				textArea.appendText("Funciona \n");
+			}
 		}
     }
-	
-	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
