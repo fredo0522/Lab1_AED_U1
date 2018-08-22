@@ -1,8 +1,10 @@
 package com.Lab1AED.model;
 
+import java.util.Random;
+
 public class Model {
 	
-	private float[] arrayNumbers;
+	private Number[] arrayNumbers;
 	private boolean isInteger;
 	private boolean repeatNumber;
 	private boolean random;
@@ -11,7 +13,7 @@ public class Model {
 		this.isInteger = isInteger;
 		this.repeatNumber = repeatNumber;
 		this.random = random;
-		arrayNumbers = new float[sizeArray];
+		arrayNumbers = new Number[sizeArray];
 		
 		if(random) createArray();
 		else createArrayManual();
@@ -24,7 +26,11 @@ public class Model {
 			}
 		}else {
 			for(int i = 0; i < arrayNumbers.length; i++) {
-				arrayNumbers[i] = (float) Math.random() * Integer.MAX_VALUE + (0);
+				//arrayNumbers[i] = (int) Math.random() * Integer.MAX_VALUE + (0);
+				Random r = new Random();
+				arrayNumbers[i] = r.nextInt(Integer.MAX_VALUE);
+				
+				System.out.println(arrayNumbers[i]);
 			}
 		}
 		
@@ -38,11 +44,11 @@ public class Model {
 		
 	}
 	
-	public float[] getArray() {
+	public Number[] getArray() {
 		return arrayNumbers;
 	}
 	
-	public void setArray(float[] array) {
+	public void setArray(Number[] array) {
 		this.arrayNumbers = array;
 	}
 	

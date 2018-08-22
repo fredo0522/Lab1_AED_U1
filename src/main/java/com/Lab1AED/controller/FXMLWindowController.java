@@ -94,7 +94,7 @@ public class FXMLWindowController implements Initializable{
 		}else {
 			textArea.setText("Funciona los valores Random \n");
 			worldModel = new Model(size, isInteger, random, repeatNumber);
-			float[] array = worldModel.getArray();
+			Number[] array = worldModel.getArray();
 			
 			for (int i = 0; i < array.length; i++) {
 				textArea.appendText(String.valueOf(array[i]) + "\n");
