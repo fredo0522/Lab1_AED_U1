@@ -67,6 +67,7 @@ public class Model {
 	}
 	
 	public void createRandomNumbers(){
+		long startTimer = System.currentTimeMillis();
 		if(!isInteger) {
 			for(int i = 0; i < arrayNumbers.length; i++) {
 				arrayNumbers[i] = (float) Math.random() * Float.MAX_VALUE;
@@ -78,6 +79,9 @@ public class Model {
 				
 			}
 		}
+		long endTimer = System.currentTimeMillis();
+		long timer = endTimer-startTimer;
+		System.out.println((((float)timer/1000) + " Secs"));
 	}
 	
 	public void createNoRepeatingRandomNumbers() throws GenerationException {

@@ -207,8 +207,6 @@ public class FXMLWindowController implements Initializable{
 				}catch(GenerationException e) {
 					throw e;
 				}
-				
-				worldModel = new Model(size, isInteger, random, repeatNumber,Integer.valueOf(minNumber.getText()) , Integer.valueOf(maxNumber.getText()));
 
 			}else {
 				try {
@@ -244,12 +242,18 @@ public class FXMLWindowController implements Initializable{
     }
 	
 	public void writeArray() {
+		long startTimer = System.currentTimeMillis();
 		Number[] array = worldModel.getArray();
-		String numbers = "";
+		StringBuilder sb = new StringBuilder();
+		
 		for (int i = 0; i < array.length; i++) {
-			numbers+= array[i] + "\n";
+			sb.append(array[i] + "\n");
 		}
-		textArea.setText(numbers);
+		String text = sb.toString();
+		textArea.setText(text);
+		long endTimer = System.currentTimeMillis();
+		long timer = endTimer-startTimer;
+		time.setText(((float)timer/1000) + " Secs");
 	}
 	
 	@Override
