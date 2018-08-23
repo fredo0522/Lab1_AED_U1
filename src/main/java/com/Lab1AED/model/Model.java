@@ -124,24 +124,22 @@ public class Model {
 		return repeated;
 	}
 	
-	public void sortArray(String sortMethod, String sortChoice) {
+	public void sortArray(String sortMethod) {
 		long startTimer = System.currentTimeMillis();
 		
 		if(sortMethod.equals(COUNTING_SORT)) {
-			countingSort(sortChoice);
+			countingSort();
 		}else if(sortMethod.equals(QUICKSORT)) {
-			quickSort(sortChoice);
+			quickSort();
 		}else if(sortMethod.equals(MERGE_SORT)) {
-			mergeSort(sortChoice);
+			mergeSort();
 		}
 		long endTimer = System.currentTimeMillis();
 		this.timeAlgorithm = endTimer - startTimer;
 	}
 	
-	public void mergeSort(String sortChoice) {
-		if(sortChoice.equals(ASCENDANT)) {
-			ascendantMergeSort(0, arrayNumbers.length-1);
-		}
+	public void mergeSort() {
+		ascendantMergeSort(0, arrayNumbers.length-1);
 	}
 	
 	public void ascendantMerge(int l, int m, int r) {
@@ -236,10 +234,8 @@ public class Model {
         } 
 	}
 	
-	public void quickSort(String sortChoice) {
-		if(sortChoice.equals(ASCENDANT)) {
-			ascendantQuickSort(0,arrayNumbers.length -1);
-		}
+	public void quickSort() {
+		ascendantQuickSort(0,arrayNumbers.length -1);
 	}
 	
 	public int partitionQuickSort(int low, int high) {
@@ -293,10 +289,8 @@ public class Model {
         }
 	}
 	
-	public void countingSort(String sortChoice) {
-		if(sortChoice.equals(ASCENDANT)) {
-			ascendantCountingSort();
-		}
+	public void countingSort() {
+		ascendantCountingSort();
 		
 	}
 	
