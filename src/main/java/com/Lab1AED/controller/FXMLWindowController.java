@@ -22,6 +22,9 @@ public class FXMLWindowController implements Initializable{
 	private ComboBox<String> sortChoice;
 	
 	@FXML
+    private ComboBox<String> sortAlgorithm;
+	
+	@FXML
 	private ComboBox<String> numberType;
 	
 	@FXML
@@ -37,15 +40,23 @@ public class FXMLWindowController implements Initializable{
     private TextField sizeArray;
 	
 	@FXML
+    private TextField maxNumber;
+	
+	@FXML
     private TextArea textArea;
 	
 	@FXML
-	public void organizeChoiceBox() {
+	public void organizeBoxes() {
 		sortChoice.setPromptText("Ordenamiento");
 		sortChoice.getItems().add("Creciente");
 		sortChoice.getItems().add("Decreciente");
 		sortChoice.getItems().add("Aleatorio");
 		sortChoice.getItems().add("Desordenados en un %");
+		
+		sortAlgorithm.setPromptText("Algoritmo");
+		sortAlgorithm.getItems().add("Merge sort");
+		sortAlgorithm.getItems().add("Quicksort");
+		sortAlgorithm.getItems().add("Counting sort");
 		
 		numberType.setPromptText("Tipo Numero");
 		numberType.getItems().add("Enteros");
@@ -104,6 +115,6 @@ public class FXMLWindowController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		organizeChoiceBox();
+		organizeBoxes();
 	}
 }
