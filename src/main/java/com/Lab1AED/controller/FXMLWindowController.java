@@ -51,9 +51,6 @@ public class FXMLWindowController implements Initializable{
     private TextField maxNumber;
 	
 	@FXML
-	private TextField minNumber;
-	
-	@FXML
     private TextArea textArea;
 	
 	@FXML
@@ -79,14 +76,14 @@ public class FXMLWindowController implements Initializable{
 		if(manual.isSelected()) {
 			repeatNumbers.setDisable(true);
 			repeatNumbers.setSelected(false);
-			maxNumber.setVisible(false);
+			maxNumber.setDisable(true);
 			maxNumber.setText("");
-			minNumber.setVisible(false);
+			minNumber.setDisable(true);
 			minNumber.setText("");
 		}else {
 			repeatNumbers.setDisable(false);
-			maxNumber.setVisible(true);
-			minNumber.setVisible(true);
+			maxNumber.setDisable(false);
+			minNumber.setDisable(false);
 		}
     }
 	
