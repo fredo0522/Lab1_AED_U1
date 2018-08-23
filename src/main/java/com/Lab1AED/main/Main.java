@@ -15,7 +15,7 @@ public class Main extends Application{
 		Parent root = FXMLLoader.load(getClass().getResource("/view/window.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Laboratorio AED");
+		primaryStage.setTitle("Sorting test");
 		primaryStage.getIcons().add(new Image("/img/sort.png"));
 		primaryStage.show();
 	}
