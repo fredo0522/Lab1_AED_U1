@@ -22,6 +22,7 @@ public class Model {
 		if(random) createArray();
 		else createArrayManual();
 	}
+	
 	public Model(int sizeArray, boolean isInteger, boolean random, boolean repeatNumber) {
 		this.isInteger = isInteger;
 		this.repeatNumber = repeatNumber;
@@ -52,7 +53,6 @@ public class Model {
 		}
 		
 	}
-	
 	
 	public void createArrayManual() {
 		System.out.println("Se creo un array Manual");

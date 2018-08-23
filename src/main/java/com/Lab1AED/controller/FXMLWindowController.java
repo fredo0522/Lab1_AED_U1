@@ -1,8 +1,6 @@
 package com.Lab1AED.controller;
 
 import java.net.URL;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.ResourceBundle;
 import com.Lab1AED.model.*;
 import javafx.event.ActionEvent;
@@ -129,10 +127,6 @@ public class FXMLWindowController implements Initializable{
 			textArea.setText("Funciona para escribir valores de forma manual \n");
 			worldModel = new Model(size);
 			
-			
-			//worldModel.sortArray(sortChoice.getValue());
-			//Cambiar de posision el choicebox del orden a la izquierda del BorderLayout y un Boton
-			
 		}else {
 			if(isInteger) {
 				worldModel = new Model(size, isInteger, random, repeatNumber,Integer.valueOf(minNumber.getText()) , Integer.valueOf(maxNumber.getText()));
@@ -150,7 +144,7 @@ public class FXMLWindowController implements Initializable{
 	
 	@FXML
     void sortArray(ActionEvent event) {
-
+		
     }
 	
 	@Override
