@@ -22,12 +22,10 @@ public class Model {
 		if(random) createArray();
 		else createArrayManual();
 	}
-	public Model(int sizeArray, boolean isInteger, boolean random, boolean repeatNumber, float min, float max) {
+	public Model(int sizeArray, boolean isInteger, boolean random, boolean repeatNumber) {
 		this.isInteger = isInteger;
 		this.repeatNumber = repeatNumber;
 		this.random = random;
-		this.min = min;
-		this.max = max;
 		arrayNumbers = new Number[sizeArray];
 		
 		if(random) createArray();
@@ -42,16 +40,14 @@ public class Model {
 		if(!isInteger) {
 			for(int i = 0; i < arrayNumbers.length; i++) {
 				
-				max =max.floatValue() > Float.MAX_VALUE ? max = Float.MAX_VALUE : max ;
-				arrayNumbers[i] = (float) Math.random() * (max.floatValue()- max.floatValue()) + (min.floatValue());
+				arrayNumbers[i] = (float) Math.random() * Float.MAX_VALUE;
 			}
 		}else {
 			for(int i = 0; i < arrayNumbers.length; i++) {
-				//arrayNumbers[i] = (int) Math.random() * Integer.MAX_VALUE + (0);
+	
 				Random r = new Random();
-				arrayNumbers[i] = r.nextInt(max.intValue()-min.intValue());
+				arrayNumbers[i] = r.nextInt(max.intValue()+1);
 				
-				System.out.println(arrayNumbers[i]);
 			}
 		}
 		
