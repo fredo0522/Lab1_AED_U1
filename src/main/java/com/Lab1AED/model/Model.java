@@ -138,10 +138,8 @@ public class Model {
 		this.timeAlgorithm = endTimer - startTimer;
 	}
 	
-	public void mergeSort(String sortChoice) {
-		if(sortChoice.equals(ASCENDANT)) {
-			ascendantMergeSort(0, arrayNumbers.length-1);
-		}
+	public void mergeSort() {
+		ascendantMergeSort(0, arrayNumbers.length-1);
 	}
 	
 	public void ascendantMerge(int l, int m, int r) {
@@ -236,10 +234,8 @@ public class Model {
         } 
 	}
 	
-	public void quickSort(String sortChoice) {
-		if(sortChoice.equals(ASCENDANT)) {
-			ascendantQuickSort(0,arrayNumbers.length -1);
-		}
+	public void quickSort() {
+		ascendantQuickSort(0,arrayNumbers.length -1);
 	}
 	
 	public int partitionQuickSort(int low, int high) {
@@ -293,10 +289,8 @@ public class Model {
         }
 	}
 	
-	public void countingSort(String sortChoice) {
-		if(sortChoice.equals(ASCENDANT)) {
-			ascendantCountingSort();
-		}
+	public void countingSort() {
+		ascendantCountingSort();
 		
 	}
 	

@@ -63,7 +63,7 @@ public class FXMLWindowController implements Initializable{
 		sortChoice.getItems().add("Ascendant");
 		sortChoice.getItems().add("Descendant");
 		sortChoice.getItems().add("Random");
-		sortChoice.getItems().add("Disorder with a %");
+		sortChoice.getItems().add("Disorder");
 		
 		sortAlgorithm.setPromptText("Algorithm");
 		sortAlgorithm.getItems().add("Merge sort");
@@ -94,6 +94,8 @@ public class FXMLWindowController implements Initializable{
 		}
     }
 	
+
+    
 	@FXML
 	void changeMinMax(ActionEvent event) {
 		if(numberType.getValue().equals("Integer")) {
@@ -207,14 +209,14 @@ public class FXMLWindowController implements Initializable{
 		Number[] array = worldModel.getArray();
 		textArea.setText("");
 		for (int i = 0; i < array.length; i++) {
-			textArea.appendText(String.valueOf(array[i]) + " / ");
+			textArea.appendText(String.valueOf(array[i]) + "\n");
 		}
 	}
 	
 	@FXML
     void sortArray(ActionEvent event) {
-		if(sortAlgorithm.getValue() != null && sortChoice.getValue() != null) {
-			worldModel.sortArray(sortAlgorithm.getValue(), sortChoice.getValue());
+		if(sortAlgorithm.getValue() != null) {
+			worldModel.sortArray(sortAlgorithm.getValue());
 		}
 		
 		textArea.setText("Order Array: \n");
@@ -229,6 +231,7 @@ public class FXMLWindowController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		organizeBoxes();
+		sortChoice.setVisible(false);
 		sortAlgorithm.setVisible(false);
 		btnSort.setVisible(false);
 	}
