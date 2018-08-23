@@ -1,6 +1,8 @@
 package com.Lab1AED.controller;
 
 import java.net.URL;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 import com.Lab1AED.model.*;
 import javafx.event.ActionEvent;
@@ -41,6 +43,9 @@ public class FXMLWindowController implements Initializable{
 	
 	@FXML
     private TextField sizeArray;
+	
+    @FXML
+    private TextField minNumber;
 	
 	@FXML
     private TextField maxNumber;
@@ -88,11 +93,14 @@ public class FXMLWindowController implements Initializable{
 	@FXML
     void generateArray(ActionEvent event) {
 		try {
+			
 			arrayCreation();
 			sortChoice.setVisible(true);
 			sortAlgorithm.setVisible(true);
 			btnSort.setVisible(true);
+			
 		}catch (Exception e) {
+			e.printStackTrace();
 			Alert warning = new Alert(AlertType.INFORMATION);
 			warning.setTitle("Error");
 			warning.setHeaderText(null);
@@ -102,22 +110,36 @@ public class FXMLWindowController implements Initializable{
     }
 	
 	public void arrayCreation() {
-		
+		textArea.setText("");
 		boolean isInteger = numberType.getValue().equals("Enteros")? true:false;
 		boolean repeatNumber = repeatNumbers.isSelected() ? true:false;
 		boolean random = manual.isSelected() ? false: true;
 		int size = Integer.valueOf(sizeArray.getText());
+		Number min = 0;
+		Number max = 0;
+		try {
+			min = NumberFormat.getInstance().parse(minNumber.getText());
+			max = NumberFormat.getInstance().parse(maxNumber.getText());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		if (manual.isSelected()) {
 			textArea.setText("Funciona para escribir valores de forma manual \n");
-			worldModel = new Model(size, isInteger, random, repeatNumber);
+			worldModel = new Model(size);
+			
 			
 			//worldModel.sortArray(sortChoice.getValue());
 			//Cambiar de posision el choicebox del orden a la izquierda del BorderLayout y un Boton
 			
 		}else {
-			textArea.setText("Funciona los valores Random \n");
-			worldModel = new Model(size, isInteger, random, repeatNumber);
+			if(isInteger) {
+				worldModel = new Model(size, isInteger, random, repeatNumber, min.intValue(), max.intValue());
+			}else {
+				worldModel = new Model(size, isInteger, random, repeatNumber, min.floatValue(), max.floatValue());
+			}
+			
 			Number[] array = worldModel.getArray();
 			
 			for (int i = 0; i < array.length; i++) {
