@@ -132,7 +132,7 @@ public class FXMLWindowController implements Initializable{
 			if(sortChoice.getValue().equals(Model.ASCENDANT)) {
 				worldModel.sortArray(Model.QUICKSORT);
 			}else if(sortChoice.getValue().equals(Model.DESCENDANT)) {
-				worldModel.sortDescendantArray();
+				worldModel.sortDescendantArray(0 ,worldModel.getArray().length-1);
 			}else if(sortChoice.getValue().equals(Model.DISORDER)){
 				
 			}else {
@@ -154,6 +154,7 @@ public class FXMLWindowController implements Initializable{
 			
 		
 		}catch (Exception e) {
+			e.printStackTrace();
 			Alert warning = new Alert(AlertType.INFORMATION);
 			warning.setTitle("Error");
 			warning.setHeaderText(null);

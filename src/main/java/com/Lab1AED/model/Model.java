@@ -338,8 +338,64 @@ public class Model {
 	public long getTimeAlgorithm() {
 		return timeAlgorithm;
 	}
+	
+	public void sortDescendantArray(int low, int high) {
+		if (low < high)
+        {
+            /* pi is partitioning index, arr[pi] is 
+              now at right place */
+            int pi = partitionDescendantArray(low, high);
+ 
+            // Recursively sort elements before
+            // partition and after partition
+            sortDescendantArray(low, pi-1);
+            sortDescendantArray(pi+1, high);
+        }
+	}
 
-	public void sortDescendantArray() {
-		
+	public int partitionDescendantArray(int p, int r) {
+		if(!isInteger) {
+			float x = arrayNumbers[p].floatValue(); // pivot
+		    int i = p;
+		    int j = r;
+		    while (true) {
+
+		        while (arrayNumbers[i].floatValue() > x) {
+		            i++;
+		        }
+
+		        while (arrayNumbers[j].floatValue() < x) {
+		            j--;
+		        }
+		        if (i < j) {
+		            float temp = arrayNumbers[i].floatValue();
+		            arrayNumbers[i] = arrayNumbers[j];
+		            arrayNumbers[j] = temp;
+		        } else {
+		            return j;
+		        }
+		    }	
+		}else {
+			int x = arrayNumbers[p].intValue(); // pivot
+		    int i = p;
+		    int j = r;
+		    while (true) {
+
+		        while (arrayNumbers[i].intValue() > x) {
+		            i++;
+		        }
+
+		        while (arrayNumbers[j].intValue() < x) {
+		            j--;
+		        }
+		        if (i < j) {
+		            int temp = arrayNumbers[i].intValue();
+		            arrayNumbers[i] = arrayNumbers[j];
+		            arrayNumbers[j] = temp;
+		        } else {
+		            return j;
+		        }
+		    }		
+		}
 	}
 }
