@@ -90,8 +90,16 @@ public class FXMLWindowController implements Initializable{
 	@FXML
 	void changeMinMax(ActionEvent event) {
 		if(numberType.getValue().equals("Integer")) {
-			minNumber.setDisable(false);
-			maxNumber.setDisable(false);
+			if(manual.isSelected()) {
+				maxNumber.setDisable(true);
+				maxNumber.setText("");
+				minNumber.setDisable(true);
+				minNumber.setText("");
+			}else {
+				minNumber.setDisable(false);
+				maxNumber.setDisable(false);
+			}
+			
 			sortAlgorithm.getItems().add("Counting sort");
 		}else {
 			minNumber.setDisable(true);
