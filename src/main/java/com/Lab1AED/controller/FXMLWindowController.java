@@ -67,6 +67,9 @@ public class FXMLWindowController implements Initializable{
 		numberType.setPromptText("Tipo Numero");
 		numberType.getItems().add("Enteros");
 		numberType.getItems().add("De coma flotante");
+		
+		minNumber.setDisable(true);
+		maxNumber.setDisable(true);
 	}
 	
 	@FXML

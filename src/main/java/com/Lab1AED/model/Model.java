@@ -46,7 +46,7 @@ public class Model {
 	}
 	
 	public void createArray() throws GenerationException {
-		if(!repeatNumber) {
+		if(repeatNumber) {
 			createRandomNumbers();
 		}else {
 			try {
@@ -77,9 +77,7 @@ public class Model {
 		if(!isInteger) {
 			for(int i = 0; i < arrayNumbers.length; i++) {
 				float randomFloat = (float) Math.random() * Float.MAX_VALUE;
-				while(isRepeated(randomFloat)) {
-					randomFloat = (float) Math.random() * Float.MAX_VALUE;
-				}
+				
 				arrayNumbers[i] = randomFloat;
 			}
 		}else {
@@ -103,14 +101,14 @@ public class Model {
 	public boolean isRepeated(Number number) {
 		boolean repeated = false;
 		
-		for(int i = 0; i < arrayNumbers.length && arrayNumbers[i] != null; i++ ) {
+		for(int i = 0; i < arrayNumbers.length && arrayNumbers[i] != null && !repeated; i++ ) {
 			if(!isInteger) {
 				if(number.floatValue() == arrayNumbers[i].floatValue());{
-					return true;
+					repeated = true;
 				}
 			}else {
 				if(number.intValue() == arrayNumbers[i].intValue()) {
-					return true;
+					repeated = true;
 				}
 			}
 			
