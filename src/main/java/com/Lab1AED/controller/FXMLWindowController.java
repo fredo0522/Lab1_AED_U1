@@ -1,6 +1,7 @@
 package com.Lab1AED.controller;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import com.Lab1AED.model.*;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 
 public class FXMLWindowController implements Initializable{
 	
@@ -145,8 +147,24 @@ public class FXMLWindowController implements Initializable{
 		int size = Integer.valueOf(sizeArray.getText());
 		
 		if (manual.isSelected()) {
-			textArea.setText("Funciona para escribir valores de forma manual \n");
+			
 			worldModel = new Model(size);
+			
+			if(isInteger) {
+				Number[] numbers = new Number[size];
+				for(int j = 0 ; j < numbers.length; j++) {
+					TextInputDialog dialog = new TextInputDialog();
+					dialog.setTitle("Entrada Posicion: " + String.valueOf(j));
+					dialog.setHeaderText(null);
+					dialog.setContentText("Escriba la entrada en la posicion " + String.valueOf(j) + " del arreglo");
+					Optional<String> result = dialog.showAndWait();
+					int number = result.isPresent() ? Integer.valueOf(result.get()): 0;
+					numbers[j] = number;
+				}
+				worldModel.setArray(numbers);
+			}else {
+				
+			}
 			
 		}else {
 			if(isInteger) {
@@ -167,12 +185,12 @@ public class FXMLWindowController implements Initializable{
 				}
 				
 			}
-			
-			Number[] array = worldModel.getArray();
-			
-			for (int i = 0; i < array.length; i++) {
-				textArea.appendText(String.valueOf(array[i]) + "\n");
-			}
+		}
+		
+		Number[] array = worldModel.getArray();
+		textArea.setText("");
+		for (int i = 0; i < array.length; i++) {
+			textArea.appendText(String.valueOf(array[i]) + "\n");
 		}
 	}
 	

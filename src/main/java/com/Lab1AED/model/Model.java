@@ -49,7 +49,6 @@ public class Model {
 	
 	public Model(int sizeArray) {
 		arrayNumbers = new Number[sizeArray];
-		createArrayManual();
 	}
 	
 	public void createArray() throws GenerationException {
@@ -122,10 +121,6 @@ public class Model {
 			
 		}
 		return repeated;
-	}
-	
-	public void createArrayManual() {
-		System.out.println("Se creo un array Manual");
 	}
 	
 	public void sortArray(String sortMethod, String sortChoice) {
