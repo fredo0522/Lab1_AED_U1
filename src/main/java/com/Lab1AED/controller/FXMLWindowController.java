@@ -1,6 +1,5 @@
 package com.Lab1AED.controller;
 
-import java.io.BufferedWriter;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;

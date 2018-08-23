@@ -9,7 +9,7 @@ public class Model {
 	public final String MERGE_SORT = "Merge sort";
 	public final String ASCENDANT = "Ascendant";
 	public final String DESCENDANT = "Descendant";
-	public final String DISORDER = "Disorder";
+	public final String DISORDER = "Disorder with a %";
 	
 	private Number[] arrayNumbers;
 	private long timeAlgorithm;
@@ -124,15 +124,15 @@ public class Model {
 		return repeated;
 	}
 	
-	public void sortArray(String sortMethod, String sortChoice) {
+	public void sortArray(String sortMethod) {
 		long startTimer = System.currentTimeMillis();
 		
 		if(sortMethod.equals(COUNTING_SORT)) {
-			countingSort(sortChoice);
+			countingSort();
 		}else if(sortMethod.equals(QUICKSORT)) {
-			quickSort(sortChoice);
+			quickSort();
 		}else if(sortMethod.equals(MERGE_SORT)) {
-			mergeSort(sortChoice);
+			mergeSort();
 		}
 		long endTimer = System.currentTimeMillis();
 		this.timeAlgorithm = endTimer - startTimer;
