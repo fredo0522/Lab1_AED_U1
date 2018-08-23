@@ -31,6 +31,9 @@ public class FXMLWindowController implements Initializable{
 	private Button btnAction;
 	
 	@FXML
+    private Button btnSort;
+	
+	@FXML
     private CheckBox manual;
 	
 	@FXML
@@ -66,11 +69,9 @@ public class FXMLWindowController implements Initializable{
 	@FXML
 	void visibleChoiceBox(ActionEvent event) {
 		if(manual.isSelected()) {
-			sortChoice.setDisable(true);
 			repeatNumbers.setDisable(true);
 			repeatNumbers.setSelected(false);
 		}else {
-			sortChoice.setDisable(false);
 			repeatNumbers.setDisable(false);
 		}
     }
@@ -79,6 +80,9 @@ public class FXMLWindowController implements Initializable{
     void generateArray(ActionEvent event) {
 		try {
 			arrayCreation();
+			sortChoice.setVisible(true);
+			sortAlgorithm.setVisible(true);
+			btnSort.setVisible(true);
 		}catch (Exception e) {
 			Alert warning = new Alert(AlertType.INFORMATION);
 			warning.setTitle("Error");
@@ -113,8 +117,16 @@ public class FXMLWindowController implements Initializable{
 		}
 	}
 	
+	@FXML
+    void sortArray(ActionEvent event) {
+
+    }
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		organizeBoxes();
+		sortChoice.setVisible(false);
+		sortAlgorithm.setVisible(false);
+		btnSort.setVisible(false);
 	}
 }
