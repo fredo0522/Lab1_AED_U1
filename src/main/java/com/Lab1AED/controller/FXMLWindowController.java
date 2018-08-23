@@ -64,7 +64,7 @@ public class FXMLWindowController implements Initializable{
 		sortChoice.getItems().add("Ascendant");
 		sortChoice.getItems().add("Descendant");
 		sortChoice.getItems().add("Random");
-		sortChoice.getItems().add("Disorder");
+		sortChoice.getItems().add("Disorder with a %");
 		
 		sortAlgorithm.setPromptText("Algorithm");
 		sortAlgorithm.getItems().add("Merge sort");
