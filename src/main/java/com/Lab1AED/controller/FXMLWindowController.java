@@ -62,7 +62,7 @@ public class FXMLWindowController implements Initializable{
 		sortAlgorithm.setPromptText("Algoritmo");
 		sortAlgorithm.getItems().add("Merge sort");
 		sortAlgorithm.getItems().add("Quicksort");
-		sortAlgorithm.getItems().add("Counting sort");
+		
 		
 		numberType.setPromptText("Tipo Numero");
 		numberType.getItems().add("Enteros");
