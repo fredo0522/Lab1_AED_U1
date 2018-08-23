@@ -85,9 +85,11 @@ public class FXMLWindowController implements Initializable{
 		if(numberType.getValue().equals("Enteros")) {
 			minNumber.setDisable(false);
 			maxNumber.setDisable(false);
+			sortAlgorithm.getItems().add("Counting sort");
 		}else {
 			minNumber.setDisable(true);
 			maxNumber.setDisable(true);
+			sortAlgorithm.getItems().remove(2);
 		}
 	}
 	
