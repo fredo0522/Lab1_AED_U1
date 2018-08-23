@@ -137,7 +137,7 @@ public class Model {
 		}
 	}
 	
-	public int partitionQuickSort(int high, int low) {
+	public int partitionQuickSort(int low, int high) {
 		 int pivot = arrayNumbers[high].intValue(); 
 	        int i = (low-1); // index of smaller element
 	        for (int j=low; j<high; j++)
@@ -163,7 +163,7 @@ public class Model {
 	        return i+1;
 	}
 	
-	public void ascendantQuickSort(int high, int low) {
+	public void ascendantQuickSort(int low, int high) {
 		if (low < high)
         {
             /* pi is partitioning index, arr[pi] is 
