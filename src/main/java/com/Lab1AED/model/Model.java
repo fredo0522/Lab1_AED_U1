@@ -376,26 +376,21 @@ public class Model {
 		        }
 		    }	
 		}else {
-			int x = arrayNumbers[p].intValue(); // pivot
-		    int i = p;
-		    int j = r;
-		    while (true) {
-
-		        while (arrayNumbers[i].intValue() > x) {
-		            i++;
-		        }
-
-		        while (arrayNumbers[j].intValue() < x) {
-		            j--;
-		        }
-		        if (i < j) {
-		            int temp = arrayNumbers[i].intValue();
-		            arrayNumbers[i] = arrayNumbers[j];
-		            arrayNumbers[j] = temp;
-		        } else {
-		            return j;
-		        }
-		    }		
+			int pivot = arrayNumbers[r].intValue(); 
+	        int i = (p-1); // index of smaller element
+	        for (int j=p; j<r; j++){
+	            if (arrayNumbers[j].intValue() >= pivot){
+	                i++;
+	                int temp = arrayNumbers[i].intValue();
+	                arrayNumbers[i] = arrayNumbers[j];
+	                arrayNumbers[j] = temp;
+	            }
+	        }
+	        int temp = arrayNumbers[i+1].intValue();
+	        arrayNumbers[i+1] = arrayNumbers[r];
+	        arrayNumbers[r] = temp;
+	 
+	        return i+1;			
 		}
 	}
 }

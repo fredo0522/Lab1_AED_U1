@@ -219,12 +219,7 @@ public class FXMLWindowController implements Initializable{
 				
 			}
 		}
-		
-	//	Number[] array = worldModel.getArray();
 		textArea.setText("");
-//		for (int i = 0; i < array.length; i++) {
-//			textArea.appendText(String.valueOf(array[i]) + "\n");
-//		}
 	}
 	
 	@FXML
@@ -250,9 +245,11 @@ public class FXMLWindowController implements Initializable{
 	
 	public void writeArray() {
 		Number[] array = worldModel.getArray();
+		String numbers = "";
 		for (int i = 0; i < array.length; i++) {
-			textArea.appendText(String.valueOf(array[i]) + "\n");
+			numbers+= array[i] + "\n";
 		}
+		textArea.setText(numbers);
 	}
 	
 	@Override
