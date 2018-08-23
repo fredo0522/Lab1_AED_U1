@@ -80,6 +80,16 @@ public class FXMLWindowController implements Initializable{
 			repeatNumbers.setDisable(false);
 		}
     }
+	@FXML
+	void changeMinMax(ActionEvent event) {
+		if(numberType.getValue().equals("Enteros")) {
+			minNumber.setDisable(false);
+			maxNumber.setDisable(false);
+		}else {
+			minNumber.setDisable(true);
+			maxNumber.setDisable(true);
+		}
+	}
 	
 	@FXML
     void generateArray(ActionEvent event) {
@@ -106,15 +116,6 @@ public class FXMLWindowController implements Initializable{
 		boolean repeatNumber = repeatNumbers.isSelected() ? true:false;
 		boolean random = manual.isSelected() ? false: true;
 		int size = Integer.valueOf(sizeArray.getText());
-		Number min = 0;
-		Number max = 0;
-		try {
-			min = NumberFormat.getInstance().parse(minNumber.getText());
-			max = NumberFormat.getInstance().parse(maxNumber.getText());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		if (manual.isSelected()) {
 			textArea.setText("Funciona para escribir valores de forma manual \n");
@@ -126,9 +127,9 @@ public class FXMLWindowController implements Initializable{
 			
 		}else {
 			if(isInteger) {
-				worldModel = new Model(size, isInteger, random, repeatNumber, min.intValue(), max.intValue());
+				worldModel = new Model(size, isInteger, random, repeatNumber,Integer.valueOf(minNumber.getText()) , Integer.valueOf(maxNumber.getText()));
 			}else {
-				worldModel = new Model(size, isInteger, random, repeatNumber, min.floatValue(), max.floatValue());
+				worldModel = new Model(size, isInteger, random, repeatNumber);
 			}
 			
 			Number[] array = worldModel.getArray();
