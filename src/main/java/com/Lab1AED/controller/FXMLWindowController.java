@@ -1,6 +1,7 @@
 package com.Lab1AED.controller;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import com.Lab1AED.model.*;
@@ -128,9 +129,21 @@ public class FXMLWindowController implements Initializable{
 		try {
 			
 			arrayCreation();
+			if(sortChoice.getValue().equals(Model.ASCENDANT)) {
+				worldModel.sortArray(Model.QUICKSORT);
+			}else if(sortChoice.getValue().equals(Model.DESCENDANT)) {
+				worldModel.sortDescendantArray();
+			}else if(sortChoice.getValue().equals(Model.DISORDER)){
+				
+			}else {
+				
+			}
+			writeArray();
 			sortChoice.setVisible(true);
 			sortAlgorithm.setVisible(true);
 			btnSort.setVisible(true);
+			
+			
 			
 		}catch(GenerationException ex) {
 			Alert warning = new Alert(AlertType.INFORMATION);
@@ -206,27 +219,40 @@ public class FXMLWindowController implements Initializable{
 			}
 		}
 		
-		Number[] array = worldModel.getArray();
+	//	Number[] array = worldModel.getArray();
 		textArea.setText("");
-		for (int i = 0; i < array.length; i++) {
-			textArea.appendText(String.valueOf(array[i]) + "\n");
-		}
+//		for (int i = 0; i < array.length; i++) {
+//			textArea.appendText(String.valueOf(array[i]) + "\n");
+//		}
 	}
 	
 	@FXML
     void sortArray(ActionEvent event) {
 		if(sortAlgorithm.getValue() != null) {
 			worldModel.sortArray(sortAlgorithm.getValue());
+			
+			textArea.setText("Ordered Array: \n");
+			writeArray();
+			
+		}else {
+			Alert warning = new Alert(AlertType.INFORMATION);
+			warning.setTitle("Error");
+			warning.setHeaderText(null);
+			warning.setContentText("You must choose a sorting algorithm first");
+			warning.showAndWait();
 		}
 		
-		textArea.setText("Order Array: \n");
+		
+		
+		time.setText( ((float)worldModel.getTimeAlgorithm()/1000) + " Secs");
+    }
+	
+	public void writeArray() {
 		Number[] array = worldModel.getArray();
 		for (int i = 0; i < array.length; i++) {
 			textArea.appendText(String.valueOf(array[i]) + "\n");
 		}
-		
-		time.setText( ((float)worldModel.getTimeAlgorithm()/1000) + " Secs");
-    }
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

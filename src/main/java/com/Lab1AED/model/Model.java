@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class Model {
 	
-	public final String COUNTING_SORT = "Counting sort";
-	public final String QUICKSORT = "Quicksort";
-	public final String MERGE_SORT = "Merge sort";
-	public final String ASCENDANT = "Ascendant";
-	public final String DESCENDANT = "Descendant";
-	public final String DISORDER = "Disorder with a %";
+	public final static String COUNTING_SORT = "Counting sort";
+	public final static String QUICKSORT = "Quicksort";
+	public final static String MERGE_SORT = "Merge sort";
+	public final static String ASCENDANT = "Ascendant";
+	public final static String DESCENDANT = "Descendant";
+	public final static String DISORDER = "Disorder with a %";
 	
 	private Number[] arrayNumbers;
 	private long timeAlgorithm;
@@ -337,5 +337,9 @@ public class Model {
 	
 	public long getTimeAlgorithm() {
 		return timeAlgorithm;
+	}
+
+	public void sortDescendantArray() {
+		
 	}
 }
