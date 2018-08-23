@@ -82,7 +82,7 @@ public class Model {
 			}
 		}else {
 			for(int i = 0; i < arrayNumbers.length; i++) {
-				if(arrayNumbers.length < Math.abs(max.intValue()-min.intValue())) {
+				if(arrayNumbers.length <= Math.abs(max.intValue()-min.intValue())) {
 					Random r = new Random();
 					int randomInt = r.nextInt(max.intValue()-min.intValue()+1) - min.intValue();
 					while(isRepeated(randomInt)) {
