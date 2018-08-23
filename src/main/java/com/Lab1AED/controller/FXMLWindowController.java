@@ -89,6 +89,21 @@ public class FXMLWindowController implements Initializable{
 			minNumber.setDisable(false);
 		}
     }
+	
+
+    @FXML
+    void setSortChoices(ActionEvent event) {
+    	/*if(sortAlgorithm.getValue().equals("Counting sort")) {
+    		sortChoice.getItems().remove(3);
+    		sortChoice.getItems().remove(2);
+    	}else {
+    		if(sortChoice.getItems().get(2) == null && sortChoice.getItems().get(3) == null) {
+    			sortChoice.getItems().add("Random");
+    			sortChoice.getItems().add("Disorder");
+    		}
+    	}*/
+    }
+	
 	@FXML
 	void changeMinMax(ActionEvent event) {
 		if(numberType.getValue().equals("Integer")) {
@@ -101,14 +116,18 @@ public class FXMLWindowController implements Initializable{
 				minNumber.setDisable(false);
 				maxNumber.setDisable(false);
 			}
+			if(sortAlgorithm.getItems().size() < 3) {
+				sortAlgorithm.getItems().add("Counting sort");
+			}
 			
-			sortAlgorithm.getItems().add("Counting sort");
 		}else {
 			minNumber.setDisable(true);
 			minNumber.setText("");
 			maxNumber.setDisable(true);
 			maxNumber.setText("");
-			sortAlgorithm.getItems().remove(2);
+			if(sortAlgorithm.getItems().size() > 2) {
+				sortAlgorithm.getItems().remove(2);
+			}
 		}
 	}
 	
