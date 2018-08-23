@@ -15,6 +15,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.text.Text;
 
 public class FXMLWindowController implements Initializable{
 	
@@ -49,6 +50,9 @@ public class FXMLWindowController implements Initializable{
 	
 	@FXML
     private TextField maxNumber;
+	
+	@FXML
+    private Text time;
 	
 	@FXML
     private TextArea textArea;
@@ -233,6 +237,7 @@ public class FXMLWindowController implements Initializable{
 			textArea.appendText(String.valueOf(array[i]) + "\n");
 		}
 		
+		time.setText( ((float)worldModel.getTimeAlgorithm()/1000) + " Secs");
     }
 	
 	@Override

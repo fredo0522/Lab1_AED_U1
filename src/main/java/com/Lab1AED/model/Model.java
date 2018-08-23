@@ -12,6 +12,7 @@ public class Model {
 	public final String DISORDER = "Disorder";
 	
 	private Number[] arrayNumbers;
+	private long timeAlgorithm;
 	private boolean isInteger;
 	private boolean repeatNumber;
 	private boolean random;
@@ -135,7 +136,10 @@ public class Model {
 	
 	public void mergeSort(String sortChoice) {
 		if(sortChoice.equals(ASCENDANT)) {
+			long startTimer = System.currentTimeMillis();
 			ascendantMergeSort(0, arrayNumbers.length-1);
+			long endTimer = System.currentTimeMillis();
+			this.timeAlgorithm = endTimer - startTimer;
 		}
 	}
 	
@@ -233,7 +237,10 @@ public class Model {
 	
 	public void quickSort(String sortChoice) {
 		if(sortChoice.equals(ASCENDANT)) {
+			long startTimer = System.currentTimeMillis();
 			ascendantQuickSort(0,arrayNumbers.length -1);
+			long endTimer = System.currentTimeMillis();
+			this.timeAlgorithm = endTimer - startTimer;
 		}
 	}
 	
@@ -290,7 +297,10 @@ public class Model {
 	
 	public void countingSort(String sortChoice) {
 		if(sortChoice.equals(ASCENDANT)) {
+			long startTimer = System.currentTimeMillis();
 			ascendantCountingSort();
+			long endTimer = System.currentTimeMillis();
+			this.timeAlgorithm = endTimer - startTimer;
 		}
 		
 	}
@@ -336,7 +346,7 @@ public class Model {
 		this.arrayNumbers = array;
 	}
 	
-	public void countingSort() {
-		
+	public long getTimeAlgorithm() {
+		return timeAlgorithm;
 	}
 }
