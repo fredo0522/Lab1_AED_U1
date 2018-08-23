@@ -154,9 +154,9 @@ public class FXMLWindowController implements Initializable{
 				Number[] numbers = new Number[size];
 				for(int j = 0 ; j < numbers.length; j++) {
 					TextInputDialog dialog = new TextInputDialog();
-					dialog.setTitle("Entrada Posicion: " + String.valueOf(j));
+					dialog.setTitle("Value of the position: " + String.valueOf(j));
 					dialog.setHeaderText(null);
-					dialog.setContentText("Escriba la entrada en la posicion " + String.valueOf(j) + " del arreglo");
+					dialog.setContentText("Write the value of the position " + String.valueOf(j) + " in the array.");
 					Optional<String> result = dialog.showAndWait();
 					int number = result.isPresent() ? Integer.valueOf(result.get()): 0;
 					numbers[j] = number;
