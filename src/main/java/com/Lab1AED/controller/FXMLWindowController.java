@@ -231,7 +231,6 @@ public class FXMLWindowController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		organizeBoxes();
-		sortChoice.setVisible(false);
 		sortAlgorithm.setVisible(false);
 		btnSort.setVisible(false);
 	}
