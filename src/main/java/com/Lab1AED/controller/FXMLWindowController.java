@@ -92,7 +92,9 @@ public class FXMLWindowController implements Initializable{
 			sortAlgorithm.getItems().add("Counting sort");
 		}else {
 			minNumber.setDisable(true);
+			minNumber.setText("");
 			maxNumber.setDisable(true);
+			maxNumber.setText("");
 			sortAlgorithm.getItems().remove(2);
 		}
 	}
@@ -137,12 +139,15 @@ public class FXMLWindowController implements Initializable{
 			
 		}else {
 			if(isInteger) {
+
 				try {
 					worldModel = new Model(size, isInteger, random, repeatNumber,Integer.valueOf(minNumber.getText()) , Integer.valueOf(maxNumber.getText()));
 				}catch(GenerationException e) {
 					throw e;
 				}
 				
+				worldModel = new Model(size, isInteger, random, repeatNumber,Integer.valueOf(minNumber.getText()) , Integer.valueOf(maxNumber.getText()));
+
 			}else {
 				try {
 					worldModel = new Model(size, isInteger, random, repeatNumber);
