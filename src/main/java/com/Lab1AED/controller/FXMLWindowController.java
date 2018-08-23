@@ -200,6 +200,12 @@ public class FXMLWindowController implements Initializable{
 			worldModel.sortArray(sortAlgorithm.getValue(), sortChoice.getValue());
 		}
 		
+		textArea.setText("");
+		Number[] array = worldModel.getArray();
+		for (int i = 0; i < array.length; i++) {
+			textArea.appendText(String.valueOf(array[i]) + "\n");
+		}
+		
     }
 	
 	@Override
