@@ -238,29 +238,40 @@ public class Model {
 	}
 	
 	public int partitionQuickSort(int low, int high) {
-		 int pivot = arrayNumbers[high].intValue(); 
-	        int i = (low-1); // index of smaller element
-	        for (int j=low; j<high; j++)
-	        {
-	            // If current element is smaller than or
-	            // equal to pivot
-	            if (arrayNumbers[j].intValue() <= pivot)
-	            {
+		if(!isInteger) {
+			float pivot = arrayNumbers[high].floatValue(); 
+	        int i = (low-1);
+	        for (int j=low; j<high; j++){
+	            if (arrayNumbers[j].floatValue() <= pivot){
 	                i++;
+	                float temp = arrayNumbers[i].floatValue();
+	                arrayNumbers[i] = arrayNumbers[j];
+	                arrayNumbers[j] = temp;
+	            }
+	        }
+	        float temp = arrayNumbers[i+1].floatValue();
+	        arrayNumbers[i+1] = arrayNumbers[high];
+	        arrayNumbers[high] = temp;
 	 
-	                // swap arr[i] and arr[j]
+	        return i+1;	
+		}else {
+			int pivot = arrayNumbers[high].intValue(); 
+	        int i = (low-1); // index of smaller element
+	        for (int j=low; j<high; j++){
+	            if (arrayNumbers[j].intValue() <= pivot){
+	                i++;
 	                int temp = arrayNumbers[i].intValue();
 	                arrayNumbers[i] = arrayNumbers[j];
 	                arrayNumbers[j] = temp;
 	            }
 	        }
-	 
-	        // swap arr[i+1] and arr[high] (or pivot)
 	        int temp = arrayNumbers[i+1].intValue();
 	        arrayNumbers[i+1] = arrayNumbers[high];
 	        arrayNumbers[high] = temp;
 	 
-	        return i+1;
+	        return i+1;	
+		}
+		 
 	}
 	
 	public void ascendantQuickSort(int low, int high) {
