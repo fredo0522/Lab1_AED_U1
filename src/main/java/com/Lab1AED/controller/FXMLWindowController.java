@@ -76,8 +76,14 @@ public class FXMLWindowController implements Initializable{
 		if(manual.isSelected()) {
 			repeatNumbers.setDisable(true);
 			repeatNumbers.setSelected(false);
+			maxNumber.setDisable(true);
+			maxNumber.setText("");
+			minNumber.setDisable(true);
+			minNumber.setText("");
 		}else {
 			repeatNumbers.setDisable(false);
+			maxNumber.setDisable(false);
+			minNumber.setDisable(false);
 		}
     }
 	@FXML
