@@ -181,7 +181,16 @@ public class FXMLWindowController implements Initializable{
 				}
 				worldModel.setArray(numbers);
 			}else {
-				
+				for(int j = 0 ; j < numbers.length; j++) {
+					TextInputDialog dialog = new TextInputDialog();
+					dialog.setTitle("Value of the position: " + String.valueOf(j));
+					dialog.setHeaderText(null);
+					dialog.setContentText("Write the value of the position " + String.valueOf(j) + " in the array.");
+					Optional<String> result = dialog.showAndWait();
+					float number = result.isPresent() ? Float.valueOf(result.get()): 0;
+					numbers[j] = number;
+				}
+				worldModel.setArray(numbers);
 			}
 			
 		}else {
@@ -218,7 +227,7 @@ public class FXMLWindowController implements Initializable{
 			worldModel.sortArray(sortAlgorithm.getValue(), sortChoice.getValue());
 		}
 		
-		textArea.setText("");
+		textArea.setText("Order Array: \n");
 		Number[] array = worldModel.getArray();
 		for (int i = 0; i < array.length; i++) {
 			textArea.appendText(String.valueOf(array[i]) + "\n");
