@@ -53,20 +53,20 @@ public class FXMLWindowController implements Initializable{
 	
 	@FXML
 	public void organizeBoxes() {
-		sortChoice.setPromptText("Ordenamiento");
-		sortChoice.getItems().add("Creciente");
-		sortChoice.getItems().add("Decreciente");
-		sortChoice.getItems().add("Aleatorio");
-		sortChoice.getItems().add("Desordenados en un %");
+		sortChoice.setPromptText("Sorting");
+		sortChoice.getItems().add("Ascendant");
+		sortChoice.getItems().add("Descendant");
+		sortChoice.getItems().add("Random");
+		sortChoice.getItems().add("Disorder");
 		
-		sortAlgorithm.setPromptText("Algoritmo");
+		sortAlgorithm.setPromptText("Algorithm");
 		sortAlgorithm.getItems().add("Merge sort");
 		sortAlgorithm.getItems().add("Quicksort");
 		
 		
-		numberType.setPromptText("Tipo Numero");
-		numberType.getItems().add("Enteros");
-		numberType.getItems().add("De coma flotante");
+		numberType.setPromptText("Number type");
+		numberType.getItems().add("Integer");
+		numberType.getItems().add("Float");
 		
 		minNumber.setDisable(true);
 		maxNumber.setDisable(true);
@@ -89,7 +89,7 @@ public class FXMLWindowController implements Initializable{
     }
 	@FXML
 	void changeMinMax(ActionEvent event) {
-		if(numberType.getValue().equals("Enteros")) {
+		if(numberType.getValue().equals("Integer")) {
 			minNumber.setDisable(false);
 			maxNumber.setDisable(false);
 			sortAlgorithm.getItems().add("Counting sort");
@@ -124,14 +124,14 @@ public class FXMLWindowController implements Initializable{
 			Alert warning = new Alert(AlertType.INFORMATION);
 			warning.setTitle("Error");
 			warning.setHeaderText(null);
-			warning.setContentText("Falta llenar alguno de los campos que se piden");
+			warning.setContentText("Information missing to execute the task");
 			warning.showAndWait();
 		}
     }
 	
 	public void arrayCreation() throws GenerationException {
 		textArea.setText("");
-		boolean isInteger = numberType.getValue().equals("Enteros")? true:false;
+		boolean isInteger = numberType.getValue().equals("Integer")? true:false;
 		boolean repeatNumber = repeatNumbers.isSelected() ? true:false;
 		boolean random = manual.isSelected() ? false: true;
 		int size = Integer.valueOf(sizeArray.getText());
@@ -170,6 +170,9 @@ public class FXMLWindowController implements Initializable{
 	
 	@FXML
     void sortArray(ActionEvent event) {
+		if(sortAlgorithm.getValue() != null && sortChoice.getValue() != null) {
+			worldModel.sortArray(sortAlgorithm.getValue(), sortChoice.getValue());
+		}
 		
     }
 	

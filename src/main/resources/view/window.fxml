@@ -32,7 +32,7 @@
                         <Insets />
                      </GridPane.margin>
                   </ComboBox>
-                  <Button fx:id="btnSort" mnemonicParsing="false" onAction="#sortArray" text="Ordenar" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <Button fx:id="btnSort" mnemonicParsing="false" onAction="#sortArray" text="Sort" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -49,7 +49,7 @@
          <children>
             <HBox alignment="CENTER" maxWidth="-Infinity" prefWidth="150.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Generar Numeros:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Generate numbers" />
                </children>
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -59,7 +59,7 @@
                <children>
                   <HBox alignment="CENTER_RIGHT">
                      <children>
-                        <CheckBox fx:id="repeatNumbers" mnemonicParsing="false" text="Repetir Numeros" />
+                        <CheckBox fx:id="repeatNumbers" mnemonicParsing="false" text="Repeat numbers" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -67,7 +67,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT">
                      <children>
-                        <CheckBox fx:id="manual" mnemonicParsing="false" onAction="#visibleChoiceBox" text="Entrada Manual" />
+                        <CheckBox fx:id="manual" mnemonicParsing="false" onAction="#visibleChoiceBox" text="Manual entrie" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -85,13 +85,13 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <TextField fx:id="sizeArray" promptText="Cantidad de Entradas">
+                              <TextField fx:id="sizeArray" promptText="Amount of entries">
                                  <GridPane.margin>
                                     <Insets bottom="10.0" />
                                  </GridPane.margin>
                               </TextField>
-                              <TextField fx:id="maxNumber" promptText="Cantidad Maxima" GridPane.rowIndex="2" />
-                              <TextField fx:id="minNumber" promptText="Cantidad Minima" GridPane.rowIndex="1">
+                              <TextField fx:id="maxNumber" promptText="Maximum value" GridPane.rowIndex="2" />
+                              <TextField fx:id="minNumber" promptText="Minimum value" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" />
                                  </GridPane.margin>
@@ -116,7 +116,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                      <children>
-                        <Button fx:id="btnAction" mnemonicParsing="false" onAction="#generateArray" text="Generar" />
+                        <Button fx:id="btnAction" mnemonicParsing="false" onAction="#generateArray" text="Generate" />
                      </children>
                   </HBox>
                </children>
@@ -134,7 +134,7 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo de ejecucion del Algoritmo: ">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Execution time of the Algorithm:">
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>

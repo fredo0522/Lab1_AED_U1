@@ -4,6 +4,13 @@ import java.util.Random;
 
 public class Model {
 	
+	public final String COUNTING_SORT = "Counting sort";
+	public final String QUICKSORT = "Quicksort";
+	public final String MERGE_SORG = "Merge sort";
+	public final String ASCENDANT = "Ascendant";
+	public final String DESCENDANT = "Descendant";
+	public final String DISORDER = "Disorder";
+	
 	private Number[] arrayNumbers;
 	private boolean isInteger;
 	private boolean repeatNumber;
@@ -121,8 +128,10 @@ public class Model {
 		System.out.println("Se creo un array Manual");
 	}
 	
-	public void sortArray(String sortMethod) {
-		
+	public void sortArray(String sortMethod, String sortChoice) {
+		if(sortMethod.equals(COUNTING_SORT)) {
+			countingSort();
+		}
 	}
 	
 	public Number[] getArray() {
@@ -133,4 +142,7 @@ public class Model {
 		this.arrayNumbers = array;
 	}
 	
+	public void countingSort() {
+		
+	}
 }
