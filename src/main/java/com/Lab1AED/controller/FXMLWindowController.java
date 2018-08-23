@@ -106,6 +106,14 @@ public class FXMLWindowController implements Initializable{
 			sortAlgorithm.setVisible(true);
 			btnSort.setVisible(true);
 			
+		}catch(GenerationException ex) {
+			Alert warning = new Alert(AlertType.INFORMATION);
+			warning.setTitle("Error");
+			warning.setHeaderText(null);
+			warning.setContentText(ex.getMessage());
+			warning.showAndWait();
+			
+		
 		}catch (Exception e) {
 			e.printStackTrace();
 			Alert warning = new Alert(AlertType.INFORMATION);
@@ -116,7 +124,7 @@ public class FXMLWindowController implements Initializable{
 		}
     }
 	
-	public void arrayCreation() {
+	public void arrayCreation() throws GenerationException {
 		textArea.setText("");
 		boolean isInteger = numberType.getValue().equals("Enteros")? true:false;
 		boolean repeatNumber = repeatNumbers.isSelected() ? true:false;
@@ -129,9 +137,19 @@ public class FXMLWindowController implements Initializable{
 			
 		}else {
 			if(isInteger) {
-				worldModel = new Model(size, isInteger, random, repeatNumber,Integer.valueOf(minNumber.getText()) , Integer.valueOf(maxNumber.getText()));
+				try {
+					worldModel = new Model(size, isInteger, random, repeatNumber,Integer.valueOf(minNumber.getText()) , Integer.valueOf(maxNumber.getText()));
+				}catch(GenerationException e) {
+					throw e;
+				}
+				
 			}else {
-				worldModel = new Model(size, isInteger, random, repeatNumber);
+				try {
+					worldModel = new Model(size, isInteger, random, repeatNumber);
+				}catch(GenerationException e) {
+					throw e;
+				}
+				
 			}
 			
 			Number[] array = worldModel.getArray();

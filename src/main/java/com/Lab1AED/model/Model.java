@@ -11,47 +11,112 @@ public class Model {
 	private Number min;
 	private Number max;
 	
-	public Model(int sizeArray, boolean isInteger, boolean random, boolean repeatNumber, int min, int max) {
+	public Model(int sizeArray, boolean isInteger, boolean random, boolean repeatNumber, int min, int max) throws GenerationException{
 		this.isInteger = isInteger;
 		this.repeatNumber = repeatNumber;
 		this.random = random;
 		this.min = min;
 		this.max = max;
 		arrayNumbers = new Number[sizeArray];
+		try {
+			createArray();
+		}catch(GenerationException e) {
+			throw e;
+		}
 		
-		if(random) createArray();
-		else createArrayManual();
+		
 	}
 	
-	public Model(int sizeArray, boolean isInteger, boolean random, boolean repeatNumber) {
+	public Model(int sizeArray, boolean isInteger, boolean random, boolean repeatNumber) throws GenerationException {
 		this.isInteger = isInteger;
 		this.repeatNumber = repeatNumber;
 		this.random = random;
 		arrayNumbers = new Number[sizeArray];
+		try {
+			createArray();
+		}catch(GenerationException e){
+			throw e;
+		}
 		
-		if(random) createArray();
-		else createArrayManual();
 	}
 	
 	public Model(int sizeArray) {
 		arrayNumbers = new Number[sizeArray];
+		createArrayManual();
 	}
 	
-	public void createArray() {
+	public void createArray() throws GenerationException {
+		if(!repeatNumber) {
+			createRandomNumbers();
+		}else {
+			try {
+				createNoRepeatingRandomNumbers();
+			}catch(GenerationException e) {
+				throw e;
+			}
+			
+		}
+		
+	}
+	
+	public void createRandomNumbers(){
 		if(!isInteger) {
 			for(int i = 0; i < arrayNumbers.length; i++) {
-				
 				arrayNumbers[i] = (float) Math.random() * Float.MAX_VALUE;
 			}
 		}else {
 			for(int i = 0; i < arrayNumbers.length; i++) {
-	
 				Random r = new Random();
 				arrayNumbers[i] = r.nextInt(max.intValue()+1);
 				
 			}
 		}
+	}
+	
+	public void createNoRepeatingRandomNumbers() throws GenerationException {
+		if(!isInteger) {
+			for(int i = 0; i < arrayNumbers.length; i++) {
+				float randomFloat = (float) Math.random() * Float.MAX_VALUE;
+				while(isRepeated(randomFloat)) {
+					randomFloat = (float) Math.random() * Float.MAX_VALUE;
+				}
+				arrayNumbers[i] = randomFloat;
+			}
+		}else {
+			for(int i = 0; i < arrayNumbers.length; i++) {
+				if(arrayNumbers.length < Math.abs(max.intValue()-min.intValue())) {
+					Random r = new Random();
+					int randomInt = r.nextInt(max.intValue()+1);
+					while(isRepeated(randomInt)) {
+						randomInt = r.nextInt(max.intValue()+1);
+					}
+					arrayNumbers[i] = randomInt;
+				}else {
+					GenerationException e = new GenerationException();
+					throw e;
+				}
+				
+			}
+		}
+	}
+	
+	public boolean isRepeated(Number number) {
+		boolean repeated = false;
 		
+		for(int i = 0; i < arrayNumbers.length && arrayNumbers[i] != null; i++ ) {
+			if(!isInteger) {
+				if(number.floatValue() == arrayNumbers[i].floatValue());{
+					return true;
+				}
+			}else {
+				if(number.intValue() == arrayNumbers[i].intValue()) {
+					return true;
+				}
+			}
+			
+			
+		}
+		return repeated;
 	}
 	
 	public void createArrayManual() {
