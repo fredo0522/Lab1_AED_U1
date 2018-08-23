@@ -91,7 +91,7 @@
                                  </GridPane.margin>
                               </TextField>
                               <TextField fx:id="maxNumber" promptText="Cantidad Maxima" GridPane.rowIndex="2" />
-                              <TextField promptText="Cantidad Minima" GridPane.rowIndex="1">
+                              <TextField fx:id="minNumber" promptText="Cantidad Minima" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" />
                                  </GridPane.margin>
