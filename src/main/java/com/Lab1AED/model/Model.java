@@ -126,55 +126,95 @@ public class Model {
 	public void sortArray(String sortMethod, String sortChoice) {
 		if(sortMethod.equals(COUNTING_SORT)) {
 			countingSort(sortChoice);
+		}else if(sortMethod.equals(QUICKSORT)) {
+			quickSort(sortChoice);
 		}
+	}
+	
+	public void quickSort(String sortChoice) {
+		if(sortChoice.equals(ASCENDANT)) {
+			ascendantQuickSort(arrayNumbers[0].intValue(), arrayNumbers[arrayNumbers.length -1].intValue());
+		}
+	}
+	
+	public int partitionQuickSort(int high, int low) {
+		 int pivot = arrayNumbers[high].intValue(); 
+	        int i = (low-1); // index of smaller element
+	        for (int j=low; j<high; j++)
+	        {
+	            // If current element is smaller than or
+	            // equal to pivot
+	            if (arrayNumbers[j].intValue() <= pivot)
+	            {
+	                i++;
+	 
+	                // swap arr[i] and arr[j]
+	                int temp = arrayNumbers[i].intValue();
+	                arrayNumbers[i] = arrayNumbers[j];
+	                arrayNumbers[j] = temp;
+	            }
+	        }
+	 
+	        // swap arr[i+1] and arr[high] (or pivot)
+	        int temp = arrayNumbers[i+1].intValue();
+	        arrayNumbers[i+1] = arrayNumbers[high];
+	        arrayNumbers[high] = temp;
+	 
+	        return i+1;
+	}
+	
+	public void ascendantQuickSort(int high, int low) {
+		if (low < high)
+        {
+            /* pi is partitioning index, arr[pi] is 
+              now at right place */
+            int pi = partitionQuickSort(low, high);
+ 
+            // Recursively sort elements before
+            // partition and after partition
+            ascendantQuickSort(low, pi-1);
+            ascendantQuickSort(pi+1, high);
+        }
 	}
 	
 	public void countingSort(String sortChoice) {
 		if(sortChoice.equals(ASCENDANT)) {
-		    // array to be sorted in, this array is necessary
-		    // when we sort object datatypes, if we don't, 
-		    // we can sort directly into the input array     
-		    Number[] aux = new Number[arrayNumbers.length];
-		 
-		    // find the smallest and the largest value
-		    int min = arrayNumbers[0].intValue();
-		    int max = arrayNumbers[0].intValue();
-		    for (int i = 1; i < arrayNumbers.length; i++) {
-		      if (arrayNumbers[i].intValue() < min) {
-		        min = arrayNumbers[i].intValue();
-		      } else if (arrayNumbers[i].intValue() > max) {
-		        max = arrayNumbers[i].intValue();
-		      }
-		    }
-		 
-		    // init array of frequencies
-		    int[] counts = new int[max - min + 1];
-		 
-		    // init the frequencies
-		    for (int i = 0;  i < arrayNumbers.length; i++) {
-		      counts[arrayNumbers[i].intValue() - min]++;
-		    }
-		 
-		    // recalculate the array - create the array of occurences
-		    counts[0]--;
-		    for (int i = 1; i < counts.length; i++) {
-		      counts[i] = counts[i] + counts[i-1];
-		    }
-		 
-		    /*
-		      Sort the array right to the left
-		      1) Look up in the array of occurences the last occurence of the given value
-		      2) Place it into the sorted array
-		      3) Decrement the index of the last occurence of the given value
-		      4) Continue with the previous value of the input array (goto set1), 
-		         terminate if all values were already sorted
-		    */ 
-		    for (int i = arrayNumbers.length - 1; i >= 0; i--) {
-		        aux[counts[arrayNumbers[i].intValue() - min]--] = arrayNumbers[i].intValue();
-		    }
-		 
-		    	arrayNumbers = aux;;
+			ascendantCountingSort();
 		}
+		
+	}
+	
+	public void ascendantCountingSort() {
+	    Number[] aux = new Number[arrayNumbers.length];
+	 
+	   
+	    int min = arrayNumbers[0].intValue();
+	    int max = arrayNumbers[0].intValue();
+	    for (int i = 1; i < arrayNumbers.length; i++) {
+	      if (arrayNumbers[i].intValue() < min) {
+	        min = arrayNumbers[i].intValue();
+	      } else if (arrayNumbers[i].intValue() > max) {
+	        max = arrayNumbers[i].intValue();
+	      }
+	    }
+	 
+	    int[] counts = new int[max - min + 1];
+	 
+
+	    for (int i = 0;  i < arrayNumbers.length; i++) {
+	      counts[arrayNumbers[i].intValue() - min]++;
+	    }
+	 
+	    counts[0]--;
+	    for (int i = 1; i < counts.length; i++) {
+	      counts[i] = counts[i] + counts[i-1];
+	    }
+	 
+	    for (int i = arrayNumbers.length - 1; i >= 0; i--) {
+	        aux[counts[arrayNumbers[i].intValue() - min]--] = arrayNumbers[i].intValue();
+	    }
+	 
+	    	arrayNumbers = aux;;
 	}
 	
 	public Number[] getArray() {
