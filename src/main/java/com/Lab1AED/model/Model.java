@@ -125,6 +125,8 @@ public class Model {
 	}
 	
 	public void sortArray(String sortMethod, String sortChoice) {
+		long startTimer = System.currentTimeMillis();
+		
 		if(sortMethod.equals(COUNTING_SORT)) {
 			countingSort(sortChoice);
 		}else if(sortMethod.equals(QUICKSORT)) {
@@ -132,14 +134,13 @@ public class Model {
 		}else if(sortMethod.equals(MERGE_SORT)) {
 			mergeSort(sortChoice);
 		}
+		long endTimer = System.currentTimeMillis();
+		this.timeAlgorithm = endTimer - startTimer;
 	}
 	
 	public void mergeSort(String sortChoice) {
 		if(sortChoice.equals(ASCENDANT)) {
-			long startTimer = System.currentTimeMillis();
 			ascendantMergeSort(0, arrayNumbers.length-1);
-			long endTimer = System.currentTimeMillis();
-			this.timeAlgorithm = endTimer - startTimer;
 		}
 	}
 	
@@ -237,10 +238,7 @@ public class Model {
 	
 	public void quickSort(String sortChoice) {
 		if(sortChoice.equals(ASCENDANT)) {
-			long startTimer = System.currentTimeMillis();
 			ascendantQuickSort(0,arrayNumbers.length -1);
-			long endTimer = System.currentTimeMillis();
-			this.timeAlgorithm = endTimer - startTimer;
 		}
 	}
 	
@@ -297,10 +295,7 @@ public class Model {
 	
 	public void countingSort(String sortChoice) {
 		if(sortChoice.equals(ASCENDANT)) {
-			long startTimer = System.currentTimeMillis();
 			ascendantCountingSort();
-			long endTimer = System.currentTimeMillis();
-			this.timeAlgorithm = endTimer - startTimer;
 		}
 		
 	}
