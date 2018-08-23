@@ -1,5 +1,6 @@
 package com.Lab1AED.controller;
 
+import java.io.BufferedWriter;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -221,7 +222,7 @@ public class FXMLWindowController implements Initializable{
 		Number[] array = worldModel.getArray();
 		textArea.setText("");
 		for (int i = 0; i < array.length; i++) {
-			textArea.appendText(String.valueOf(array[i]) + "\n");
+			textArea.appendText(String.valueOf(array[i]) + " / ");
 		}
 	}
 	
