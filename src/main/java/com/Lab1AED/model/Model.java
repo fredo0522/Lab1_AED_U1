@@ -133,7 +133,7 @@ public class Model {
 	
 	public void quickSort(String sortChoice) {
 		if(sortChoice.equals(ASCENDANT)) {
-			ascendantQuickSort(arrayNumbers[0].intValue(), arrayNumbers[arrayNumbers.length -1].intValue());
+			ascendantQuickSort(0,arrayNumbers.length -1);
 		}
 	}
 	
