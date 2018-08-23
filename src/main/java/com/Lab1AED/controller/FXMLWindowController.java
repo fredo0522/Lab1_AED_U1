@@ -130,7 +130,6 @@ public class FXMLWindowController implements Initializable{
 			
 		
 		}catch (Exception e) {
-			e.printStackTrace();
 			Alert warning = new Alert(AlertType.INFORMATION);
 			warning.setTitle("Error");
 			warning.setHeaderText(null);
@@ -149,9 +148,9 @@ public class FXMLWindowController implements Initializable{
 		if (manual.isSelected()) {
 			
 			worldModel = new Model(size);
+			Number[] numbers = new Number[size];
 			
 			if(isInteger) {
-				Number[] numbers = new Number[size];
 				for(int j = 0 ; j < numbers.length; j++) {
 					TextInputDialog dialog = new TextInputDialog();
 					dialog.setTitle("Value of the position: " + String.valueOf(j));
