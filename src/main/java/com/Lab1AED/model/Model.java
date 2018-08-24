@@ -394,6 +394,7 @@ public class Model {
 	}
 	
 	public void disorderArray(double n) {
+		n = n/100;
 		int k = (int) (arrayNumbers.length*n);
 		k = k/2;
 		Random r = new Random();
@@ -404,7 +405,7 @@ public class Model {
 			temp = arrayNumbers[i];
 			
 			while(i == j) {
-				i = r.nextInt();
+				i = r.nextInt(arrayNumbers.length);
 			}
 			arrayNumbers[i] = arrayNumbers[j];
 			arrayNumbers[j] = temp;

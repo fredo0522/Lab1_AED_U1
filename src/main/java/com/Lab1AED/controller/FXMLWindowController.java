@@ -134,7 +134,14 @@ public class FXMLWindowController implements Initializable{
 			}else if(sortChoice.getValue().equals(Model.DESCENDANT)) {
 				worldModel.sortDescendantArray(0 ,worldModel.getArray().length-1);
 			}else if(sortChoice.getValue().equals(Model.DISORDER)){
-				
+				TextInputDialog dialog = new TextInputDialog();
+				dialog.setTitle("How disordered you want the array % ");
+				dialog.setHeaderText(null);
+				dialog.setContentText("Write the value between 0 - 100 ");
+				Optional<String> result = dialog.showAndWait();
+				Integer number = result.isPresent() ? Integer.valueOf(result.get()): 0;
+				worldModel.sortArray(Model.QUICKSORT);
+				worldModel.disorderArray(number);
 			}else {
 				
 			}
