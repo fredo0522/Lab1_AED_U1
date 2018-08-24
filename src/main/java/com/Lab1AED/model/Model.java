@@ -392,4 +392,26 @@ public class Model {
 	        return i+1;			
 		}
 	}
+	
+	public void disorderArray(double n) {
+		int k = (int) (arrayNumbers.length*n);
+		k = k/2;
+		Random r = new Random();
+		int i = r.nextInt(arrayNumbers.length);
+		int j = r.nextInt(arrayNumbers.length);
+		Number temp = 0;
+		while(k > 0) {
+			temp = arrayNumbers[i];
+			
+			while(i == j) {
+				i = r.nextInt();
+			}
+			arrayNumbers[i] = arrayNumbers[j];
+			arrayNumbers[j] = temp;
+			i= r.nextInt(arrayNumbers.length);
+			j = r.nextInt(arrayNumbers.length);
+			k--;
+			
+		}
+	}
 }
