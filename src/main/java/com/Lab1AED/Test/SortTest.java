@@ -29,7 +29,7 @@ class SortTest {
 	}
 	
 	public void setup2() {
-		numbers = new Number[1000000];
+		numbers = new Number[10000];
 		for(int i=0; i < numbers.length; i++) {
 			numbers[i] = i;
 		}
@@ -47,6 +47,24 @@ class SortTest {
 	@Test
 	public void QuickSortTest() {
 		setup1();
+		worldModel.quickSort();
+		boolean sorted = true;
+		int min = numbers[0].intValue();
+		int max = numbers[2].intValue();
+		for(int i = 1; i < numbers.length -3 && sorted; i++) {
+			if(min > numbers[i].intValue() || max < numbers[i].intValue()) {
+				sorted = false;
+			}
+			min = numbers[i].intValue();
+			max = numbers[i+2].intValue();
+		}
+		
+		assertTrue(sorted);
+	}
+	
+	@Test
+	public void QuickSortWhenSortedTest() {
+		setup2();
 		worldModel.quickSort();
 		boolean sorted = true;
 		int min = numbers[0].intValue();
