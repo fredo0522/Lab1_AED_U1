@@ -68,7 +68,6 @@ public class Model {
 	}
 	
 	public void createRandomNumbers(){
-		long startTimer = System.currentTimeMillis();
 		if(!isInteger) {
 			for(int i = 0; i < arrayNumbers.length; i++) {
 				arrayNumbers[i] = (float) Math.random() * Float.MAX_VALUE;
@@ -80,9 +79,6 @@ public class Model {
 				
 			}
 		}
-		long endTimer = System.currentTimeMillis();
-		long timer = endTimer-startTimer;
-		System.out.println((((float)timer/1000) + " Secs"));
 	}
 	
 	public void createNoRepeatingRandomNumbers() throws GenerationException {
@@ -130,7 +126,6 @@ public class Model {
 	}
 	
 	public void sortArray(String sortMethod) {
-		long startTimer = System.currentTimeMillis();
 		
 		if(sortMethod.equals(COUNTING_SORT)) {
 			countingSort();
@@ -139,8 +134,7 @@ public class Model {
 		}else if(sortMethod.equals(MERGE_SORT)) {
 			mergeSort();
 		}
-		long endTimer = System.currentTimeMillis();
-		this.timeAlgorithm = endTimer - startTimer;
+		
 	}
 	
 	public void mergeSort() {
