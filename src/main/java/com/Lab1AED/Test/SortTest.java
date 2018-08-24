@@ -14,6 +14,20 @@ class SortTest {
 	private Model worldModel;
 	private Number[] numbers;
 	
+	public void setupCountingSort() {
+		Random r = new Random();
+		numbers = new Number[100];
+		for(int i = 0; i < numbers.length ; i++) {
+			numbers[i] = r.nextInt(Integer.MAX_VALUE);
+		}
+		try {
+			worldModel = new Model(1, true, true, true, 0, 10);
+			worldModel.setArray(numbers);
+		}catch(GenerationException e) {
+			
+		}
+	}
+	
 	public void setup1() {
 		Random r = new Random();
 		numbers = new Number[1000000];
@@ -21,7 +35,7 @@ class SortTest {
 			numbers[i] = r.nextInt(Integer.MAX_VALUE);
 		}
 		try {
-			worldModel = new Model(numbers.length, true, true, true, 0, 10000000);
+			worldModel = new Model(1, true, true, true, 0, 10);
 			worldModel.setArray(numbers);
 		}catch(GenerationException e) {
 			
@@ -50,12 +64,12 @@ class SortTest {
 			if(i <= numbers.length/2) {
 				numbers[i] = i;
 			}else {
-				numbers[i] = r.nextInt(Integer.MAX_VALUE);
+				numbers[i] = r.nextInt(100);
 			}
 		}
 		
 		try {
-			worldModel = new Model(numbers.length, true, true, true, 0, 10000000);
+			worldModel = new Model(1, true, true, true, 0, 10);
 			worldModel.setArray(numbers);
 		} catch (GenerationException e) {
 			// TODO Auto-generated catch block
@@ -122,7 +136,7 @@ class SortTest {
 	
 	@Test
 	public void countingSortTest() {
-		setup1();
+		setupCountingSort();
 		worldModel.countingSort();
 		boolean sorted = true;
 		int min = numbers[0].intValue();
@@ -157,9 +171,9 @@ class SortTest {
 	}
 	
 	@Test
-	public void countingSortHalfArraySorted() {
-		setup3();
-		worldModel.countingSort();
+	public void mergeSortTest() {
+		setup1();
+		worldModel.mergeSort();
 		boolean sorted = true;
 		int min = numbers[0].intValue();
 		int max = numbers[2].intValue();
@@ -173,6 +187,5 @@ class SortTest {
 		
 		assertTrue(sorted);
 	}
-	
 
 }
