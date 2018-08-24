@@ -48,8 +48,9 @@ public class Model {
 		
 	}
 	
-	public Model(int sizeArray) {
+	public Model(int sizeArray, boolean isInteger) {
 		arrayNumbers = new Number[sizeArray];
+		this.isInteger = isInteger;
 	}
 	
 	public void createArray() throws GenerationException {

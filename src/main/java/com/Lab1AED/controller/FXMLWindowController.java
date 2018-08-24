@@ -172,8 +172,9 @@ public class FXMLWindowController implements Initializable{
 		
 		if (manual.isSelected()) {
 			
-			worldModel = new Model(size);
+			worldModel = new Model(size, isInteger);
 			Number[] numbers = new Number[size];
+			sortChoice.setValue("Random");
 			
 			if(isInteger) {
 				for(int j = 0 ; j < numbers.length; j++) {
