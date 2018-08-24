@@ -42,10 +42,32 @@ class SortTest {
 		}	
 	}
 	
+	public void setup3() {
+		Random r = new Random();
+		numbers = new Number[10000];
+		
+		for(int i = 0; i < numbers.length; i++) {
+			if(i <= numbers.length/2) {
+				numbers[i] = i;
+			}else {
+				numbers[i] = r.nextInt(Integer.MAX_VALUE);
+			}
+		}
+		
+		try {
+			worldModel = new Model(numbers.length, true, true, true, 0, 10000000);
+			worldModel.setArray(numbers);
+		} catch (GenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	
 	@Test
-	public void QuickSortTest() {
+	public void quickSortTest() {
 		setup1();
 		worldModel.quickSort();
 		boolean sorted = true;
@@ -63,7 +85,7 @@ class SortTest {
 	}
 	
 	@Test
-	public void QuickSortWhenSortedTest() {
+	public void quickSortWhenSortedTest() {
 		setup2();
 		worldModel.quickSort();
 		boolean sorted = true;
@@ -80,7 +102,77 @@ class SortTest {
 		assertTrue(sorted);
 	}
 	
+	@Test
+	public void quickSortHalfArraySorted() {
+		setup3();
+		worldModel.quickSort();
+		boolean sorted = true;
+		int min = numbers[0].intValue();
+		int max = numbers[2].intValue();
+		for(int i = 1; i < numbers.length -3 && sorted; i++) {
+			if(min > numbers[i].intValue() || max < numbers[i].intValue()) {
+				sorted = false;
+			}
+			min = numbers[i].intValue();
+			max = numbers[i+2].intValue();
+		}
+		
+		assertTrue(sorted);
+	}
 	
+	@Test
+	public void countingSortTest() {
+		setup1();
+		worldModel.countingSort();
+		boolean sorted = true;
+		int min = numbers[0].intValue();
+		int max = numbers[2].intValue();
+		for(int i = 1; i < numbers.length -3 && sorted; i++) {
+			if(min > numbers[i].intValue() || max < numbers[i].intValue()) {
+				sorted = false;
+			}
+			min = numbers[i].intValue();
+			max = numbers[i+2].intValue();
+		}
+		
+		assertTrue(sorted);
+	}
+	
+	@Test
+	public void countingSortWhenSortedTest() {
+		setup2();
+		worldModel.countingSort();
+		boolean sorted = true;
+		int min = numbers[0].intValue();
+		int max = numbers[2].intValue();
+		for(int i = 1; i < numbers.length -3 && sorted; i++) {
+			if(min > numbers[i].intValue() || max < numbers[i].intValue()) {
+				sorted = false;
+			}
+			min = numbers[i].intValue();
+			max = numbers[i+2].intValue();
+		}
+		
+		assertTrue(sorted);
+	}
+	
+	@Test
+	public void countingSortHalfArraySorted() {
+		setup3();
+		worldModel.countingSort();
+		boolean sorted = true;
+		int min = numbers[0].intValue();
+		int max = numbers[2].intValue();
+		for(int i = 1; i < numbers.length -3 && sorted; i++) {
+			if(min > numbers[i].intValue() || max < numbers[i].intValue()) {
+				sorted = false;
+			}
+			min = numbers[i].intValue();
+			max = numbers[i+2].intValue();
+		}
+		
+		assertTrue(sorted);
+	}
 	
 
 }
